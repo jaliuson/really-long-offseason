@@ -1,0 +1,23 @@
+.AllBoards{
+    background-color: #eeeeee;
+    padding: 3vh;
+}
+
+.Panel{
+    background-color: #ffffff;
+    opacity: 70;
+    border-radius: 1em;
+    width: 20%;
+    padding-top: 1px;
+    padding-bottom: 1em;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.PanelHead{
+    text-align: center;
+}
+
+.PanelBody{
+    text-align: justify;
+}
