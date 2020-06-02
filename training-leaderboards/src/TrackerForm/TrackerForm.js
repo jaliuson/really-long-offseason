@@ -67,9 +67,9 @@ export class TrackerForm extends Component {
             <div className="Form">
                 <h1>Form (Input/Write)</h1>
                 <Form onSubmit={this.onFormSubmit}>
-                    <label>Name:<Text field="text" name="name" /></label>
-                    <label>Activity:<Text field='activity' /></label>
-                    <label>Result:<Text field='result' /></label>
+                    <label className="TxtF">Name:<Text field="text" name="name" /></label>
+                    <label className="TxtF">Activity:<Text field='activity' /></label>
+                    <label className="TxtF">Result:<Text field='result' /></label>
                     <button type='submit'>Submit</button>
                 </Form>
             </div>

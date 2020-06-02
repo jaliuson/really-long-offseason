@@ -1,12 +1,9 @@
 import React, { Component } from 'react'
 import "./LeaderBoard.css"
 import Board from "./Board.js"
-
 import Tabletop from 'tabletop';
 const sheetID = '16OAWty-HNh9W1YhQi8UvOYeKyPp9PnBlr8WOAqrn1H4';
-let byActivity = [[],[],[],[],[]];
-let activities;
-
+var resultsByActivity;
 
 export class Leaderboard extends Component {
     constructor() {
@@ -14,7 +11,6 @@ export class Leaderboard extends Component {
         this.state = {
           data: []
         }
-        activities = ['40 yard' , '100 meter' , 'Vertical Jump' , 'Agility' , 'Box Drill'];
       }
     
     componentDidMount() {
@@ -23,23 +19,36 @@ export class Leaderboard extends Component {
             simpleSheet: true,
             callback: googleData => {
                 console.log(googleData)
-            this.setState({
-                data: googleData
-            })
+                this.setState({data: googleData})
             },
         })
     }
     
-    splitbyActivity = (allResults) =>{
-        allResults.map(function(result){
-            for(let i=0 ; i<activities.length ; i++){
-                if(result.acitivity == activities[i])
-                byActivity[i].push(result);
+    findCategories = (fullSet) => { //takes in full, unsorted, set of responses and finds the number of different categories
+        let cats = [];
+        fullSet.map(result => {
+            let placed = false;
+            for(let i=0 ; i<fullSet.length && !placed; i++){
+                if(cats[i] == result.activity){ //check if activity type has been recorded yet
+                    placed = true;
+                    break;
+                }
+            }
+            if(placed == false){ //is activity was not matched, it is added to running list of options
+                cats.push(result.activity);
             }
         })
     }
 
-    sort = (rankDirection , activityResults) => {
+    splitByCategory = (fullSet , categories) => { //split data by activity takes full set of unorganized data and the list of categories to spilt it into
+        let catSplit;
+        for(let i=0; i<categories.length; i++){ //creates empty array for each category (to be filled with result objects)
+            let x = [];
+            catSplit.push(x);
+        }
+    }
+   
+    sort = (rankDirection , activityResults) => { //bubble sort that can sort in either direction
         let temp = null;
         if(rankDirection==1) {//1 indicates higher is better
             for(let i=0 ; i<activityResults.length ; i++){
@@ -71,7 +80,6 @@ export class Leaderboard extends Component {
         return (
             <div className="AllBoards">
                 <h1> Current Leaderboards (Output/Read)</h1>
-                <body>{byActivity.splitbyActivity(data)}{byActivity.map(function(cat){this.sort(cat)})}</body>
                 <Board activity='run' leaders={people}/>
             </div>
         )

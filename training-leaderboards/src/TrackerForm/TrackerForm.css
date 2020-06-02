@@ -2,3 +2,15 @@
     background-color: rgb(214, 214, 247);
     padding: 3vh;
 }
+
+.TxtF{
+    border-radius: .5rem;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    border: none;
+    
+}
+
+.SubmitButton{
+    border: none;
+}
