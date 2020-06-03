@@ -1,23 +1,46 @@
 .AllBoards{
-    background-color: #eeeeee;
-    padding: 3vh;
+    width: 100%;
+    padding: 2vh;
+    padding-top: 0px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    margin-top: 0px;
+    align-items: center;
+    justify-content: center;
 }
 
 .Panel{
-    background-color: #ffffff;
-    opacity: 70;
+    background-color: #202020;
+    opacity: 90%;
     border-radius: 1em;
-    width: 20%;
-    padding-top: 1px;
-    padding-bottom: 1em;
-    padding-left: 1em;
-    padding-right: 1em;
+    min-width: 30rem;
+    padding: 1rem;
+    padding-top: 0rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 4rem;
+    color: white;
 }
 
 .PanelHead{
     text-align: center;
+    width: 100%;
+    border-bottom-style: solid;
+    border-color: white;
 }
 
 .PanelBody{
     text-align: justify;
+}
+
+table,th td {
+    border-collapse: collapse;   
+}
+
+th, td{
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    padding-top: 1rem;
+    padding-bottom: .5rem;
 }

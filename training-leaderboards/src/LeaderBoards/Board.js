@@ -1,4 +1,12 @@
 import React, { Component } from 'react'
+import {
+    useTable,
+    useGroupBy,
+    useFilters,
+    useSortBy,
+    useExpanded,
+    usePagination,
+  } from 'react-table'
 
 export class Board extends Component {
     render() {
@@ -10,11 +18,20 @@ export class Board extends Component {
                 <header className="PanelHead">
                     <h1>{activity}</h1>
                 </header>
-                <body className="PanelBody">
-                    <p>1. {leaders[0].name} {leaders[0].result} {leaders[0].date}</p>
-                    <p>2. {leaders[1].name} {leaders[1].result} {leaders[1].date}</p>
-                    <p>3. {leaders[2].name} {leaders[2].result} {leaders[2].date}</p>
-                </body>
+                <table>
+                    <tr>
+                        <th></th> <th>Name</th> <th>Result</th> <th>Date</th>
+                    </tr>
+                    <tr>
+                        <th style={{color: "#7724bf"}}>1.</th> <th>{leaders[0].name}</th> <th>{leaders[0].result}</th> <th>{leaders[0].date.substring(0,leaders[0].date.indexOf(' '))}</th>
+                    </tr>
+                    <tr>
+                        <th style={{color: "#7724bf"}}>2.</th> <th>{leaders[1].name}</th> <th>{leaders[1].result}</th> <th>{leaders[1].date.substring(0,leaders[1].date.indexOf(' '))}</th>
+                    </tr>
+                    <tr>
+                        <th style={{color: "#7724bf"}}>3.</th> <th>{leaders[2].name}</th> <th>{leaders[2].result}</th> <th>{leaders[2].date.substring(0,leaders[2].date.indexOf(' '))}</th>
+                    </tr>
+                </table>
             </div>
         )
     }

@@ -10,7 +10,11 @@
     "informed": "^3.8.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
+    "react-parallax": "^3.0.3",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1",
+    "react-scroll-parallax": "^2.3.2",
+    "react-table": "^7.1.0",
     "tabletop": "^1.6.3"
   },
   "scripts": {

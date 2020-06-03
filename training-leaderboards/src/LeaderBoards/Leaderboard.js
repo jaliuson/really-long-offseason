@@ -2,8 +2,10 @@ import React, { Component } from 'react'
 import "./LeaderBoard.css"
 import Board from "./Board.js"
 import Tabletop from 'tabletop';
+
 const sheetID = '16OAWty-HNh9W1YhQi8UvOYeKyPp9PnBlr8WOAqrn1H4';
-var resultsByActivity;
+const leaderboardLength = 3;
+
 
 export class Leaderboard extends Component {
     constructor() {
@@ -18,7 +20,6 @@ export class Leaderboard extends Component {
             key: sheetID,
             simpleSheet: true,
             callback: googleData => {
-                console.log(googleData)
                 this.setState({data: googleData})
             },
         })
@@ -38,17 +39,18 @@ export class Leaderboard extends Component {
                 cats.push(result.activity);
             }
         })
+        return cats;
     }
 
     splitByCategory = (fullSet , categories) => { //split data by activity takes full set of unorganized data and the list of categories to spilt it into
-        let catSplit;
+        let catSplit = []; //will become 2d array
         for(let i=0; i<categories.length; i++){ //creates empty array for each category (to be filled with result objects)
             let x = [];
             catSplit.push(x);
         }
         for(let i=0 ; i<fullSet.length ; i++){
             for(let j=0 ; j<catSplit.length ; j++){
-                if(fullSet[i].activity == catSplit[j]){
+                if(fullSet[i].activity == categories[j]){
                     catSplit[j].push(fullSet[i]);
                     break;
                 }
@@ -57,9 +59,9 @@ export class Leaderboard extends Component {
         return catSplit;
     }
    
-    sort = (rankDirection , activityResults) => { //bubble sort that can sort in either direction
+    sort = (activityResults) => { //bubble sort that can sort in either direction
         let temp = null;
-        if(rankDirection==1) {//1 indicates higher is better
+        if(activityResults.activity.contains('*')) { //for activities where higher is better
             for(let i=0 ; i<activityResults.length ; i++){
                 for(let j=i+1 ; j<activityResults.length ; j++){
                     if(activityResults[j] > activityResults[i]){
@@ -85,12 +87,32 @@ export class Leaderboard extends Component {
 
     render() {
         const {data} = this.state;
-        let people = [{name: 'Jason', result:'10', date:'06-01-2020'} , {name: 'Jason2', result:'102', date:'06-01-2020'} , {name: 'Jason3', result:'110', date:'06-01-2020'}]
+        console.log(data); //print entire unchange data set 
+        let events = this.findCategories(data) //holds all categories that were found
+        console.log(events); //print different categories
+        let catSplit = this.splitByCategory(data,events);
+        console.log(catSplit);
+
+        catSplit.forEach(catResult => {
+            if(catResult.length < leaderboardLength){
+                catResult.push({date: '--/--/--'});
+                catResult.push({date: '--/--/--'});
+                catResult.push({date: '--/--/--'});
+            }
+        })
+
+        let printable = catSplit.map(function(catRes , index){
+            console.log(catRes);
+            return(
+                <Board activity={events[index]} leaders={catRes}></Board>
+            )    
+        })
+
         return (
             <div className="AllBoards">
-                <h1> Current Leaderboards (Output/Read)</h1>
-                <Board activity='run' leaders={people}/>
+                {printable}
             </div>
+            
         )
     }
 }
