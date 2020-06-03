@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/really-long-offseason/static/css/main.7473d8cb.chunk.css",
+    "main.js": "/really-long-offseason/static/js/main.f9ffdcdf.chunk.js",
+    "main.js.map": "/really-long-offseason/static/js/main.f9ffdcdf.chunk.js.map",
+    "runtime-main.js": "/really-long-offseason/static/js/runtime-main.b6623e95.js",
+    "runtime-main.js.map": "/really-long-offseason/static/js/runtime-main.b6623e95.js.map",
+    "static/js/2.28b7df85.chunk.js": "/really-long-offseason/static/js/2.28b7df85.chunk.js",
+    "static/js/2.28b7df85.chunk.js.map": "/really-long-offseason/static/js/2.28b7df85.chunk.js.map",
+    "index.html": "/really-long-offseason/index.html",
+    "precache-manifest.68a5f9e669ac4590a90d89a431c9af41.js": "/really-long-offseason/precache-manifest.68a5f9e669ac4590a90d89a431c9af41.js",
+    "service-worker.js": "/really-long-offseason/service-worker.js",
+    "static/css/main.7473d8cb.chunk.css.map": "/really-long-offseason/static/css/main.7473d8cb.chunk.css.map",
+    "static/js/2.28b7df85.chunk.js.LICENSE.txt": "/really-long-offseason/static/js/2.28b7df85.chunk.js.LICENSE.txt",
+    "static/media/logo192.png": "/really-long-offseason/static/media/logo192.28a651c6.png",
+    "static/media/App.css": "/really-long-offseason/static/media/lowpoly.1c647910.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.b6623e95.js",
+    "static/js/2.28b7df85.chunk.js",
+    "static/css/main.7473d8cb.chunk.css",
+    "static/js/main.f9ffdcdf.chunk.js"
+  ]
+}
