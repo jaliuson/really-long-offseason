@@ -46,6 +46,15 @@ export class Leaderboard extends Component {
             let x = [];
             catSplit.push(x);
         }
+        for(let i=0 ; i<fullSet.length ; i++){
+            for(let j=0 ; j<catSplit.length ; j++){
+                if(fullSet[i].activity == catSplit[j]){
+                    catSplit[j].push(fullSet[i]);
+                    break;
+                }
+            }
+        }
+        return catSplit;
     }
    
     sort = (rankDirection , activityResults) => { //bubble sort that can sort in either direction
