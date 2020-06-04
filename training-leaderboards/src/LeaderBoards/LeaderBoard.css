@@ -12,14 +12,14 @@
 .Panel{
     background-color: #202020;
     opacity: 0.9;
-    border-radius: 1em;
-    min-width: 30rem;
-    padding: 1rem;
-    padding-top: 0rem;
+    border-radius: 3vmin;
+    min-width: 45vmin;
+    padding: 2vmin;
+    padding-top: 0px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 4rem;
+    margin: 8vmin;
     color: white;
 }
 
@@ -39,8 +39,8 @@ table,th td {
 }
 
 th, td{
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    padding-top: 1rem;
-    padding-bottom: .5rem;
+    padding-left: 2vmin;
+    padding-right: 2vmin;
+    padding-top: 2vmin;
+    padding-bottom: 1vmin;
 }

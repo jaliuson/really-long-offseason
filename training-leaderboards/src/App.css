@@ -1,21 +1,15 @@
 .App {
   text-align: center;
   background-image: url("lowpoly.png");
-  min-height: 1280px;
   display: flex;
   flex-direction: column;
   align-items: center;
   min-height: 3000px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
 .App-header {
   background-color: #202020;
-  min-height: 5rem;
+  min-height: 5vh;
   width: 100%;
   display: flex;
   align-items: left;
@@ -36,8 +30,8 @@
   border: none;
   background-color: #202020;
   color: white;
-  border-radius: 1rem;
-  min-width: 12rem;
+  border-radius: 1vmin;
+  min-width: 25vmin;
   min-height: 6rem;
   margin-top: 12rem;
   margin-bottom: 4rem;
@@ -48,19 +42,5 @@
 
 
 .AA-button:hover{
-  background-color: #3c295f;
-}
-
-a{
-  font-size: 2rem;
-}
-
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+  opacity: .6;
 }
