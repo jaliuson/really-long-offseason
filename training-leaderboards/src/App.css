@@ -35,7 +35,6 @@
 .AA-button{
   border: none;
   background-color: #202020;
-  opacity: 90%;
   color: white;
   border-radius: 1rem;
   min-width: 12rem;
@@ -44,6 +43,7 @@
   margin-bottom: 4rem;
   padding: 1rem;
   transition-duration: 0.4s;
+  opacity: 0.9;
 }
 
 
