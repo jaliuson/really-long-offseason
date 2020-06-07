@@ -42,6 +42,24 @@ export class Leaderboard extends Component {
         return cats;
     }
 
+    findPersonalTotals = (fullSet) => { //takes in full, unsorted, set of responses and finds the number of different categories
+        let ppl = [];
+        fullSet.map(result => {
+            let placed = false;
+            for(let i=0 ; i<fullSet.length && !placed; i++){
+                if(ppl[i] == result.name){ //check if activity type has been recorded yet
+                    placed = true;
+                    ppl[i].result += result.result;
+                    break;
+                }
+            }
+            if(placed == false){ //is activity was not matched, it is added to running list of options
+                ppl.push({name: result.name , result: result.result , date: "n/a"});
+            }
+        })
+        return ppl;
+    }
+
     splitByCategory = (fullSet , categories) => { //split data by activity takes full set of unorganized data and the list of categories to spilt it into
         let catSplit = []; //will become 2d array
         for(let i=0; i<categories.length; i++){ //creates empty array for each category (to be filled with result objects)
@@ -61,21 +79,34 @@ export class Leaderboard extends Component {
    
     sort = (activityResults) => { //bubble sort that can sort in either direction
         let temp = null;
-        if(activityResults.activity.contains('*')) { //for activities where higher is better
+        if(activityResults[0].activity.includes('*')) { //for activities where higher is better
             for(let i=0 ; i<activityResults.length ; i++){
                 for(let j=i+1 ; j<activityResults.length ; j++){
-                    if(activityResults[j] > activityResults[i]){
+                    if(activityResults[j].result > activityResults[i].result){
                         temp = activityResults[i];
                         activityResults[i] = activityResults[j];
                         activityResults[j] = temp;
                     }
                 }
             }
+        }
+        else if(activityResults[0].activity.includes('+')){
+            let totalResults = this.findPersonalTotals(activityResults);
+            for(let i=0 ; i<totalResults.length ; i++){
+                for(let j=i+1 ; j<totalResults.length ; j++){
+                    if(totalResults[j].result > totalResults[i].result){
+                        temp = totalResults[i];
+                        totalResults[i] = totalResults[j];
+                        totalResults[j] = temp;
+                    }
+                }
+            }
+            return totalResults;
         }
         else { //for categories where lower is better
             for(let i=0 ; i<activityResults.length ; i++){
                 for(let j=i+1 ; j<activityResults.length ; j++){
-                    if(activityResults[j] < activityResults[i]){
+                    if(activityResults[j].result < activityResults[i].result){
                         temp = activityResults[i];
                         activityResults[i] = activityResults[j];
                         activityResults[j] = temp;
@@ -83,26 +114,29 @@ export class Leaderboard extends Component {
                 }
             }
         }
+        return activityResults;
     }
 
     render() {
         const {data} = this.state;
-        console.log(data); //print entire unchange data set 
+        //console.log('full set' , data); //print entire unchange data set 
         let events = this.findCategories(data) //holds all categories that were found
-        console.log(events); //print different categories
+        //console.log('event list' , events); //print different categories
         let catSplit = this.splitByCategory(data,events);
-        console.log(catSplit);
+        //console.log('spilt by activity, unsorted' , catSplit);
+        for(let i=0 ; i<catSplit.length ; i++){
+            let temp = this.sort(catSplit[i]);
+            catSplit[i] = temp;
+        }
 
-        catSplit.forEach(catResult => {
-            if(catResult.length < leaderboardLength){
-                catResult.push({date: '--/--/--'});
-                catResult.push({date: '--/--/--'});
-                catResult.push({date: '--/--/--'});
+        catSplit.forEach(catResult => { //fill in leaderboards with empty objects
+            while(catResult.length < leaderboardLength){
+                console.log('entered');
+                catResult.push({name: "" , result: "" , date: '--/--/--'});
             }
         })
 
         let printable = catSplit.map(function(catRes , index){
-            console.log(catRes);
             return(
                 <Board activity={events[index]} leaders={catRes}></Board>
             )    
