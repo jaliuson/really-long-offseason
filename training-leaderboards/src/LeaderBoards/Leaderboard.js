@@ -90,7 +90,7 @@ export class Leaderboard extends Component {
                 }
             }
         }
-        else if(activityResults[0].activity.includes('+')){
+        else if(activityResults[0].activity.includes('"')){
             let totalResults = this.findPersonalTotals(activityResults);
             for(let i=0 ; i<totalResults.length ; i++){
                 for(let j=i+1 ; j<totalResults.length ; j++){
@@ -117,6 +117,10 @@ export class Leaderboard extends Component {
         return activityResults;
     }
 
+    findPersonalReults = (fullSet, personName) => { //returns dataset with all results (of any activity) for a single person
+        return(fullSet.filter(act => act.name == personName))
+    }
+
     render() {
         const {data} = this.state;
         //console.log('full set' , data); //print entire unchange data set 
@@ -135,6 +139,8 @@ export class Leaderboard extends Component {
                 catResult.push({name: "" , result: "" , date: '--/--/--'});
             }
         })
+
+        console.log(this.findPersonalReults(data, "Test 1"))
 
         let printable = catSplit.map(function(catRes , index){
             return(
