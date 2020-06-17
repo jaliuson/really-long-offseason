@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/really-long-offseason/static/css/main.34c5b300.chunk.css",
-    "main.js": "/really-long-offseason/static/js/main.f43e886e.chunk.js",
-    "main.js.map": "/really-long-offseason/static/js/main.f43e886e.chunk.js.map",
+    "main.js": "/really-long-offseason/static/js/main.9477e460.chunk.js",
+    "main.js.map": "/really-long-offseason/static/js/main.9477e460.chunk.js.map",
     "runtime-main.js": "/really-long-offseason/static/js/runtime-main.b6623e95.js",
     "runtime-main.js.map": "/really-long-offseason/static/js/runtime-main.b6623e95.js.map",
     "static/js/2.28b7df85.chunk.js": "/really-long-offseason/static/js/2.28b7df85.chunk.js",
     "static/js/2.28b7df85.chunk.js.map": "/really-long-offseason/static/js/2.28b7df85.chunk.js.map",
     "index.html": "/really-long-offseason/index.html",
-    "precache-manifest.42008b1d89ad226ddb6ee620c56349e2.js": "/really-long-offseason/precache-manifest.42008b1d89ad226ddb6ee620c56349e2.js",
+    "precache-manifest.f86d0e93c9e297f10893a5460d2ef7ad.js": "/really-long-offseason/precache-manifest.f86d0e93c9e297f10893a5460d2ef7ad.js",
     "service-worker.js": "/really-long-offseason/service-worker.js",
     "static/css/main.34c5b300.chunk.css.map": "/really-long-offseason/static/css/main.34c5b300.chunk.css.map",
     "static/js/2.28b7df85.chunk.js.LICENSE.txt": "/really-long-offseason/static/js/2.28b7df85.chunk.js.LICENSE.txt",
@@ -19,6 +19,6 @@
     "static/js/runtime-main.b6623e95.js",
     "static/js/2.28b7df85.chunk.js",
     "static/css/main.34c5b300.chunk.css",
-    "static/js/main.f43e886e.chunk.js"
+    "static/js/main.9477e460.chunk.js"
   ]
 }
