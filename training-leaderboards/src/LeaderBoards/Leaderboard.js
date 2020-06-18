@@ -144,15 +144,16 @@ export class Leaderboard extends Component {
 
         let printable = catSplit.map(function(catRes , index){
             return(
-                <Board activity={events[index]} leaders={catRes}></Board>
+                <Board activity={events[index]} leaders={catRes} key=""></Board>
             )    
         })
+
+
 
         return (
             <div className="AllBoards">
                 {printable}
             </div>
-            
         )
     }
 }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Form from './TrackerForm/TrackerForm.js'
+import Form, { TrackerForm } from './TrackerForm/TrackerForm.js'
 import Leaderboards from "./LeaderBoards/Leaderboard.js"
 import { ParallaxProvider } from 'react-scroll-parallax';
 import { Parallax } from 'react-scroll-parallax';
@@ -20,7 +20,7 @@ class App extends Component {
           </div>
           <Parallax y={[30, -10]} tagOuter="figure">
             <div>
-              <button id="bt" onClick={this.onClick} className="AA-button"><h2>Add Activity</h2></button>
+              <TrackerForm/>
               <div>
                 <h1 style={{color: "white" , marginTop: "1rem" , marginBottom: "0rem"}}>Current Leaderboards</h1>
               </div>

@@ -1,76 +1,71 @@
 import React, { Component } from 'react';
 import './TrackerForm.css';
 import { Form, Text } from 'informed';
-import { gapi } from 'gapi-script'
-import { loadAuth2, loadAuth2WithProps } from 'gapi-script';
+import Dropdown from 'react-dropdown';
+import 'react-dropdown/style.css';
 
-const SPREADSHEET_ID = '16OAWty-HNh9W1YhQi8UvOYeKyPp9PnBlr8WOAqrn1H4'; //from the URL of your blank Google Sheet
+const SPREADSHEET_ID = '1JKeiRZOT57uLf1OzpcpWU1l1DVSRL6ltXrGjtJ7Xsr0'; //from the URL of your blank Google Sheet
 const CLIENT_ID = '957790443603-j0bgvoq95r4m0h2r3qqhndbjo1rfij1d.apps.googleusercontent.com'; //from https://console.developers.google.com/apis/credentials
-const API_KEY = 'AIzaSyCvYqH9SIOAmG7Q-MTLA2CKcL9yGAp37Ug'; //https://console.developers.google.com/apis/credentials
-const SCOPE = 'https://www.googleapis.com/auth/spreadsheets';
+const API_KEY = 'AIzaSyDbvbASjV8hval3rqz9n5A7WRPe02_M_rQ'; //https://console.developers.google.com/apis/credentials
+const SCOPE = "";
+
+var doc;
+var sheet;
 
 export class TrackerForm extends Component {
-    /*constructor(props) {
+    constructor(props){
         super(props);
-        this.onFormSubmit = this.onFormSubmit.bind(this); //to tie the form's callback to this class
+        this.state = { name:'' , activity:'' , result:'' };
+        this.handleChange = this.handleChange.bind(this);
+
+        async function getDoc() {
+            const { GoogleSpreadsheet } = require('google-spreadsheet');
+            const creds = require('./mustangs-tracker-447125d7078c.json');
+            doc = new GoogleSpreadsheet(SPREADSHEET_ID);
+            await doc.useServiceAccountAuth(creds);
+            await doc.loadInfo();
+            console.log(doc.title); 
+            
+            sheet = doc.sheetsByIndex[0];
+            //await sheet.addRow({ name: 'Larry Page', email: 'larry@google.com' }); //... WRITE
+            
+            const rows = await sheet.getRows(); // can pass in { limit, offset } .. READ
+            //console.log(rows[0].name); // 'Larry Page
+            }
+        getDoc();
     }
 
-     async componentDidMount(){ //called automatically by React
-        this.handleClientLoad(); 
-        let auth2 = await loadAuth2(CLIENT_ID, SCOPE);
+    handleChange (evt) {
+            this.setState({ [evt.target.name]: evt.target.value });
+            console.log(this.state.name);
+            console.log(this.state.activity);
+            console.log(this.state.result);
     }
 
-    handleClientLoad =()=> { //initialize the Google API
-        gapi.load('client:auth2', this.initClient);
-    }
+    saveActivity = () => {
+            console.log("saving")
+            async function writeAcitivty(n,a,r){
+                sheet = doc.sheetsByIndex[0];
+                await sheet.addRow({name: n , activity: a , result: r});
+            }
+            writeAcitivty(this.state.name , this.state.activity , this.state.result);
+        }
 
-    initClient =()=> { //provide the authentication credentials you set up in the Google developer console
-        gapi.client.init({
-            'apiKey': API_KEY,
-            'clientId': CLIENT_ID,
-            'scope': SCOPE,
-            'discoveryDocs': ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
-        }).then(()=> {
-            gapi.auth2.getAuthInstance().isSignedIn.listen(this.updateSignInStatus); //add a function called `updateSignInStatus` if you want to do something once a user is logged in with Google
-            this.updateSignInStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-        });
-    }
-
-    onFormSubmit(submissionValues) {
-        const params = {
-          // The ID of the spreadsheet to update.
-          spreadsheetId: SPREADSHEET_ID, 
-          // The A1 notation of a range to search for a logical table of data.Values will be appended after the last row of the table.
-          range: 'Sheet1', //this is the default spreadsheet name, so unless you've changed it, or are submitting to multiple sheets, you can leave this
-          // How the input data should be interpreted.
-          valueInputOption: 'RAW', //RAW = if no conversion or formatting of submitted data is needed. Otherwise USER_ENTERED
-          // How the input data should be inserted.
-          insertDataOption: 'INSERT_ROWS', //Choose OVERWRITE OR INSERT_ROWS
-        };
-    
-        const valueRangeBody = {
-          'majorDimension': 'ROWS', //log each entry as a new row (vs column)
-          'values': [submissionValues] //convert the object's values to an array
-        };
-    
-        let request = gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody);
-        request.then(function (response) {
-          // TODO: Insert desired response behaviour on submission
-          console.log(response.result);
-        }, function (reason) {
-          console.error('error: ' + reason.result.error.message);
-        });
-      }*/
-
-    render() {
+    render() { 
+        const activityOptions = ["5km run (mm:ss:ms)","400m (mm:ss:ms)",'Triple Broad Jump (inches")(*)',"Z-Test (mm:ss:ms)","Weight Room (hh:mm) (c)"]
+        const defaultOption = activityOptions[0];
         return (
             <div className="Form">
-                <h1>Form (Input/Write)</h1>
-                <Form onSubmit={this.onFormSubmit}>
-                    <label className="TxtF">Name:<Text field="text" name="name" /></label>
-                    <label className="TxtF">Activity:<Text field='activity' /></label>
-                    <label className="TxtF">Result:<Text field='result' /></label>
-                    <button type='submit'>Submit</button>
+                <h1 style={{color: "white"}}>New Activity Form</h1>
+                <Form className="InputForm" onSubmit={this.saveActivity}>
+                    <label      name="name"     onChange={this.handleChange} className="TxtF">Name:<Text field="name" /></label>
+                    <select     name="activity" onChange={this.handleChange} value={this.state.activity}>
+                        <option value="n/a">Select Below</option>
+                        <option value="Java">Java</option>
+                        <option value="C++">C++</option>
+                    </select>
+                    <label      name="result"   onChange={this.handleChange} className="TxtF">Result:<Text field='result' /></label>
+                    <button type='submit' onClick={this.saveActivity}>Submit</button>
                 </Form>
             </div>
         )

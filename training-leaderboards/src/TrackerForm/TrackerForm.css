@@ -1,16 +1,28 @@
 .Form{
-    background-color: rgb(214, 214, 247);
+    background: #202020;
+    opacity: 0.9;
     padding: 3vh;
+    min-height: 15vh;
+    margin-top: 20vh;
+    min-width: 70;
+    border-radius: 3vh;
+    display: flex;
+    flex-direction: column;
 }
 
 .TxtF{
     border-radius: .5rem;
     margin-left: 10vw;
     margin-right: 10vw;
-    border: none;
-    
+    border: bottom;
+    color: white;
 }
 
 .SubmitButton{
     border: none;
+}
+
+.InputForm{
+    display: flex;
+    align-items: center;
 }
