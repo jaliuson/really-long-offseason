@@ -15,7 +15,7 @@ var sheet;
 export class TrackerForm extends Component {
     constructor(props){
         super(props);
-        this.state = { name:'' , activity:'' , result:'' };
+        this.state = { name:'' , activity:'' , units:'' , result:'' , submitted: false};
         this.handleChange = this.handleChange.bind(this);
 
         async function getDoc() {
@@ -40,6 +40,26 @@ export class TrackerForm extends Component {
             console.log(this.state.name);
             console.log(this.state.activity);
             console.log(this.state.result);
+            switch(this.state.activity){
+                case('Run - 5km'):
+                    this.setState({units:'(mm:ss)'});
+                    break;
+                case('Run - 400m'):
+                    this.setState({units:'(mm:ss)'});
+                    break;
+                case('Triple Broad Jump'):
+                    this.setState({units:('Inches')});
+                    break;
+                case('Z-Test'):
+                    this.setState({units:'ss:ms'});
+                    break;
+                case('Weight Room'):
+                    this.setState({units:'hh:mm'});
+                    break;
+                case('Run - General'):
+                    this.setState({units:'(hh:mm:ss)'});
+                    break
+            }
     }
 
     saveActivity = () => {
@@ -49,26 +69,42 @@ export class TrackerForm extends Component {
                 await sheet.addRow({name: n , activity: a , result: r});
             }
             writeAcitivty(this.state.name , this.state.activity , this.state.result);
+            this.setState({submitted: true})
         }
 
     render() { 
         const activityOptions = ["5km run (mm:ss:ms)","400m (mm:ss:ms)",'Triple Broad Jump (inches")(*)',"Z-Test (mm:ss:ms)","Weight Room (hh:mm) (c)"]
         const defaultOption = activityOptions[0];
-        return (
-            <div className="Form">
-                <h1 style={{color: "white"}}>New Activity Form</h1>
-                <Form className="InputForm" onSubmit={this.saveActivity}>
-                    <label      name="name"     onChange={this.handleChange} className="TxtF">Name:<Text field="name" /></label>
-                    <select     name="activity" onChange={this.handleChange} value={this.state.activity}>
-                        <option value="n/a">Select Below</option>
-                        <option value="Java">Java</option>
-                        <option value="C++">C++</option>
-                    </select>
-                    <label      name="result"   onChange={this.handleChange} className="TxtF">Result:<Text field='result' /></label>
-                    <button type='submit' onClick={this.saveActivity}>Submit</button>
-                </Form>
-            </div>
-        )
+        if(this.state.submitted == false){
+            return (
+                <div className="Form">
+                    <Form onSubmit={this.saveActivity}>
+                        <label      name="name"     onChange={this.handleChange} className="TxtF">Name:<Text field="name" className="Field"/></label>
+                        <label className="TxtF" >Acitvity:
+                            <select   className="Field"  name="activity" onChange={this.handleChange} value={this.state.activity}>
+                                <option value="n/a">Select Below</option>
+                                <option value="Run - 5km">Run - 5km</option>
+                                <option value="Run - 400m">Run - 400m</option>
+                                <option value="Triple Broad Jump">Triple Broad Jump</option>
+                                <option value="Z-Test">Z-Test</option>
+                                <option value="Weight Room">Weight Room+</option>
+                                <option value="Run - General">Run - General</option>
+                            </select>
+                        </label>
+                        <label      name="result"   onChange={this.handleChange} className="TxtF">Result:<Text field='result' className="Field"/></label>
+                        <button type='submit' onClick={this.saveActivity} className="SubmitButton">Submit</button>
+                    </Form>
+                </div>
+            )
+        }
+        else{
+            return(
+                <div className="Form">
+                    <h1 className="Message">Activtity has been recorded!</h1>
+                    <p className="Message">Refresh this page to submit a new activity</p>
+                </div>
+            )
+        }
     }
 }
 

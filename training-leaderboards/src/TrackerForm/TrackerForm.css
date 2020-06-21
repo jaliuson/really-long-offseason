@@ -1,28 +1,49 @@
 .Form{
     background: #202020;
     opacity: 0.9;
-    padding: 3vh;
-    min-height: 15vh;
-    margin-top: 20vh;
-    min-width: 70;
-    border-radius: 3vh;
+    padding: 3rem;
+    height: 40%;
+    margin-top: 2rem;
+    margin-bottom: 10vh;
+    min-width: 70%;
+    border-radius: 1.5rem;
     display: flex;
     flex-direction: column;
+    align-items: center;
 }
 
 .TxtF{
     border-radius: .5rem;
-    margin-left: 10vw;
-    margin-right: 10vw;
+    margin-left: 9rem;
+    margin-right: 9rem;
     border: bottom;
     color: white;
 }
 
 .SubmitButton{
-    border: none;
+    background: none;
+    border: solid;
+    border-color: white;
+    border-radius: .5rem;
+    height: 3rem;
+    width: 6rem;
+    color: white;
+    transition-duration: .4s;
+}
+
+.SubmitButton:hover{
+    background-color: #2bc75a;
 }
 
 .InputForm{
-    display: flex;
     align-items: center;
+    justify-content: center;
+}
+
+.Message{
+    color: white
+}
+
+.Field{
+    margin: 1rem;
 }

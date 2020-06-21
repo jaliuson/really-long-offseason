@@ -20,6 +20,7 @@ class App extends Component {
           </div>
           <Parallax y={[30, -10]} tagOuter="figure">
             <div>
+              <h1 style={{color: "white" , marginTop: "10rem"}}>New Activity Form</h1>
               <TrackerForm/>
               <div>
                 <h1 style={{color: "white" , marginTop: "1rem" , marginBottom: "0rem"}}>Current Leaderboards</h1>

@@ -13,16 +13,17 @@ export class Leaderboard extends Component {
         this.state = {
           data: []
         }
-      }
-    
-    componentDidMount() {
-        Tabletop.init({
+        
+        Tabletop.init({ //moved from componentDidMount
             key: sheetID,
             simpleSheet: true,
             callback: googleData => {
                 this.setState({data: googleData})
             },
         })
+      }
+    
+    componentDidMount() {
     }
     
     findCategories = (fullSet) => { //takes in full, unsorted, set of responses and finds the number of different categories
