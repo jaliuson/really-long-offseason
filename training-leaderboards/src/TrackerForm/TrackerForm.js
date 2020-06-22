@@ -64,11 +64,12 @@ export class TrackerForm extends Component {
 
     saveActivity = () => {
             console.log("saving")
-            async function writeAcitivty(n,a,r){
+            async function writeAcitivty(n,a,r,d){
                 sheet = doc.sheetsByIndex[0];
-                await sheet.addRow({name: n , activity: a , result: r});
+                await sheet.addRow({name: n , activity: a , result: r , date: d});
             }
-            writeAcitivty(this.state.name , this.state.activity , this.state.result);
+            var d = new Date();
+            writeAcitivty(this.state.name , this.state.activity , this.state.result , d);
             this.setState({submitted: true})
         }
 
