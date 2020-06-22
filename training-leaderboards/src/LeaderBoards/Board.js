@@ -23,13 +23,13 @@ export class Board extends Component {
                         <th></th><th>Name</th><th>Result</th><th>Date</th>
                     </tr>
                     <tr>
-                        <th style={{color: "#7724bf"}}>1.</th><th>{leaders[0].name}</th><th>{leaders[0].result}</th><th>{leaders[0].date.substring(0,leaders[0].date.indexOf(' '))}</th>
+                        <th style={{color: "#7724bf"}}>1.</th><th>{leaders[0].name}</th><th>{leaders[0].result}</th><th>{leaders[0].date.substring(0,leaders[0].date.indexOf('T'))}</th>
                     </tr>
                     <tr>
-                        <th style={{color: "#7724bf"}}>2.</th><th>{leaders[1].name}</th><th>{leaders[1].result}</th><th>{leaders[1].date.substring(0,leaders[1].date.indexOf(' '))}</th>
+                        <th style={{color: "#7724bf"}}>2.</th><th>{leaders[1].name}</th><th>{leaders[1].result}</th><th>{leaders[1].date.substring(0,leaders[1].date.indexOf('T'))}</th>
                     </tr>
                     <tr>
-                        <th style={{color: "#7724bf"}}>3.</th><th>{leaders[2].name}</th><th>{leaders[2].result}</th><th>{leaders[2].date.substring(0,leaders[2].date.indexOf(' '))}</th>
+                        <th style={{color: "#7724bf"}}>3.</th><th>{leaders[2].name}</th><th>{leaders[2].result}</th><th>{leaders[2].date.substring(0,leaders[2].date.indexOf('T'))}</th>
                     </tr>
                 </table>
             </div>

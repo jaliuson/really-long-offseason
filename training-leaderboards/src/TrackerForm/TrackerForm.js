@@ -25,7 +25,6 @@ export class TrackerForm extends Component {
             await doc.useServiceAccountAuth(creds);
             await doc.loadInfo();
             console.log(doc.title); 
-            
             sheet = doc.sheetsByIndex[0];
             //await sheet.addRow({ name: 'Larry Page', email: 'larry@google.com' }); //... WRITE
             
@@ -37,9 +36,6 @@ export class TrackerForm extends Component {
 
     handleChange (evt) {
             this.setState({ [evt.target.name]: evt.target.value });
-            console.log(this.state.name);
-            console.log(this.state.activity);
-            console.log(this.state.result);
             switch(this.state.activity){
                 case('Run - 5km'):
                     this.setState({units:'(mm:ss)'});
@@ -60,16 +56,30 @@ export class TrackerForm extends Component {
                     this.setState({units:'(hh:mm:ss)'});
                     break
             }
+            console.log(this.state.name);
+            console.log(this.state.activity);
+            console.log(this.state.result);
+            console.log(this.state.units);
     }
 
     saveActivity = () => {
             console.log("saving")
-            async function writeAcitivty(n,a,r,d){
+            async function writeAcitivty(n,a,r,d,s){
                 sheet = doc.sheetsByIndex[0];
-                await sheet.addRow({name: n , activity: a , result: r , date: d});
+                await sheet.addRow({name: n , activity: a , result: r , date: d , sort: s});
             }
             var d = new Date();
-            writeAcitivty(this.state.name , this.state.activity , this.state.result , d);
+            var s = "";
+            if(this.state.activity == "Triple Broad Jump"){
+                s = "h,s"; //higher is better , single
+            }
+            else if (this.state.activity == "Run - General" || this.state.activity == "Weight Room"){
+                s = "h,c"; //high is better , cumulative
+            }
+            else{
+                s = "l,s"; //lower is better , single
+            }
+            writeAcitivty(this.state.name , this.state.activity , this.state.result , d , s);
             this.setState({submitted: true})
         }
 
@@ -88,13 +98,22 @@ export class TrackerForm extends Component {
                                 <option value="Run - 400m">Run - 400m</option>
                                 <option value="Triple Broad Jump">Triple Broad Jump</option>
                                 <option value="Z-Test">Z-Test</option>
-                                <option value="Weight Room">Weight Room+</option>
+                                <option value="Weight Room">Weight Room</option>
                                 <option value="Run - General">Run - General</option>
                             </select>
                         </label>
                         <label      name="result"   onChange={this.handleChange} className="TxtF">Result:<Text field='result' className="Field"/></label>
-                        <button type='submit' onClick={this.saveActivity} className="SubmitButton">Submit</button>
+                        <button type='submit' onClick={this.saveActivity} className="SubmitButton">Save</button>
                     </Form>
+                    <div className="UnitKey">
+                        <h2>Activity Units</h2>
+                        <p>Run - 5km            (mm:ss)</p>
+                        <p>Run - 400m           (mm:ss)</p>
+                        <p>Triple Broad Jump    (Inches)</p>
+                        <p>Z-Test               (ss:ms)</p>
+                        <p>Weight Room          (hours)     cumulative*</p>
+                        <p>Run - General        (km)        cumulative*</p>
+                    </div>
                 </div>
             )
         }

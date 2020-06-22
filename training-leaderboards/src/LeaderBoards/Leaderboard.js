@@ -3,7 +3,7 @@ import "./LeaderBoard.css"
 import Board from "./Board.js"
 import Tabletop from 'tabletop';
 
-const sheetID = '16OAWty-HNh9W1YhQi8UvOYeKyPp9PnBlr8WOAqrn1H4';
+const sheetID = '1JKeiRZOT57uLf1OzpcpWU1l1DVSRL6ltXrGjtJ7Xsr0';
 const leaderboardLength = 3;
 
 
@@ -44,6 +44,7 @@ export class Leaderboard extends Component {
     }
 
     findPersonalTotals = (fullSet) => { //takes in full, unsorted, set of responses and finds the number of different categories
+        console.log("entered");
         let ppl = [];
         fullSet.map(result => {
             let placed = false;
@@ -80,7 +81,7 @@ export class Leaderboard extends Component {
    
     sort = (activityResults) => { //bubble sort that can sort in either direction
         let temp = null;
-        if(activityResults[0].activity.includes('*')) { //for activities where higher is better
+        if(activityResults[0].sort == "h,s") { //for activities where higher is better
             for(let i=0 ; i<activityResults.length ; i++){
                 for(let j=i+1 ; j<activityResults.length ; j++){
                     if(activityResults[j].result > activityResults[i].result){
@@ -91,7 +92,8 @@ export class Leaderboard extends Component {
                 }
             }
         }
-        else if(activityResults[0].activity.includes('"')){
+        else if(activityResults[0].sort == ("h,c")){
+            console.log("entered");
             let totalResults = this.findPersonalTotals(activityResults);
             for(let i=0 ; i<totalResults.length ; i++){
                 for(let j=i+1 ; j<totalResults.length ; j++){
@@ -136,7 +138,6 @@ export class Leaderboard extends Component {
 
         catSplit.forEach(catResult => { //fill in leaderboards with empty objects
             while(catResult.length < leaderboardLength){
-                console.log('entered');
                 catResult.push({name: "" , result: "" , date: '--/--/--'});
             }
         })
