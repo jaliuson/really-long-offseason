@@ -44,7 +44,6 @@ export class Leaderboard extends Component {
     }
 
     findPersonalTotals = (fullSet) => { //takes in full, unsorted, set of responses and finds the number of different categories
-        console.log("entered");
         let ppl = [];
         fullSet.map(result => {
             let placed = false;

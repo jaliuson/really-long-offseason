@@ -22,6 +22,7 @@ class App extends Component {
             <div>
               <h1 style={{color: "white" , marginTop: "6rem"}}>New Activity Form</h1>
               <TrackerForm/>
+              <h3 style={{color: "red"}}>** Cumulative leaderboards are still bugged, activity entry can still be recorded **</h3>
               <div>
                 <h1 style={{color: "white" , marginTop: "1rem" , marginBottom: "0rem"}}>Current Leaderboards</h1>
               </div>
