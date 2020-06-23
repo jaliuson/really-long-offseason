@@ -5,6 +5,7 @@
   flex-direction: column;
   align-items: center;
   min-height: 3000px;
+  color: white;
 }
 
 .App-header {
