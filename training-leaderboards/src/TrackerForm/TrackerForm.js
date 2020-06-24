@@ -119,7 +119,7 @@ export class TrackerForm extends Component {
         }
         else{
             return(
-                <div className="Form">
+                <div className="Form" stlye={{flexDirection: "column"}}>
                     <h1 className="Message">Activtity has been recorded!</h1>
                     <p className="Message">Refresh this page to submit a new activity</p>
                 </div>

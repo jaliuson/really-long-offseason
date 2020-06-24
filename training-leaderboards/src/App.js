@@ -17,7 +17,7 @@ class App extends Component {
           <Parallax y={[30, -10]} tagOuter="figure">
             <div>
               <h1 style={{color: "white" , marginTop: "6rem"}}>New Activity Form</h1>
-              <a href="https://docs.google.com/document/d/1sOGgjXNMIw28HDk6v3QTIQcnW7rvl3rVWPDmuoBtkWI/edit" style={{color: "cyan"}}>Workout Plan</a>
+              <a href="https://docs.google.com/document/d/1sOGgjXNMIw28HDk6v3QTIQcnW7rvl3rVWPDmuoBtkWI/edit" target="_blank" style={{color: "cyan"}}>Workout Plan</a>
               <TrackerForm/>
               <div>
                 <h1 style={{color: "white" , marginTop: "1rem" , marginBottom: "0rem"}}>Current Leaderboards</h1>
