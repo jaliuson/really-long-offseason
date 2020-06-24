@@ -45,17 +45,19 @@ export class Leaderboard extends Component {
 
     findPersonalTotals = (fullSet) => { //takes in full, unsorted, set of responses and finds the number of different categories
         let ppl = [];
-        fullSet.map(result => {
+        fullSet.forEach(result => {
             let placed = false;
-            for(let i=0 ; i<fullSet.length && !placed; i++){
-                if(ppl[i] == result.name){ //check if activity type has been recorded yet
+            for(let i=0 ; i<ppl.length && !placed; i++){
+                if(ppl[i].name == result.name){ 
                     placed = true;
-                    ppl[i].result += result.result;
+                    ppl[i].result += parseFloat(result.result);
                     break;
                 }
             }
+
             if(placed == false){ //is activity was not matched, it is added to running list of options
-                ppl.push({name: result.name , result: result.result , date: "n/a"});
+                var num = parseFloat(result.result);
+                ppl.push({name: result.name , result: num , date: "n/a"});
             }
         })
         return ppl;
