@@ -6,10 +6,6 @@ import { ParallaxProvider } from 'react-scroll-parallax';
 import { Parallax } from 'react-scroll-parallax';
 
 class App extends Component {
-  onClick(){
-    window.open("https://docs.google.com/forms/d/e/1FAIpQLSc5nCn8MUGjQGK5BxWgcf7XnF1xpUzAO66g86CUjO2SBHsA-Q/viewform");
-}
-  
   render() {
     return (
       <ParallaxProvider>
@@ -21,8 +17,8 @@ class App extends Component {
           <Parallax y={[30, -10]} tagOuter="figure">
             <div>
               <h1 style={{color: "white" , marginTop: "6rem"}}>New Activity Form</h1>
+              <a href="https://docs.google.com/document/d/1sOGgjXNMIw28HDk6v3QTIQcnW7rvl3rVWPDmuoBtkWI/edit" style={{color: "cyan"}}>Workout Plan</a>
               <TrackerForm/>
-              <h3 style={{color: "red"}}>** Cumulative leaderboards are still bugged, activity entry can still be recorded **</h3>
               <div>
                 <h1 style={{color: "white" , marginTop: "1rem" , marginBottom: "0rem"}}>Current Leaderboards</h1>
                 <p style={{color: "grey"}}>Refresh page if leaderboards are not being shown</p>
