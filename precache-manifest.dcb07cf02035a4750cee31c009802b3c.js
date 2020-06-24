@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "c4e185f1af0f2be3b26d9fab42ffe363",
+    "revision": "a560d5a45b46ab7ed8ae97bbb0e4f480",
     "url": "/really-long-offseason/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/really-long-offseason/static/css/2.ee241de9.chunk.css"
   },
   {
-    "revision": "d6454d05b5beba19a907",
+    "revision": "c8c6a9eb1dba4ca20ec3",
     "url": "/really-long-offseason/static/css/main.2d89aaa4.chunk.css"
   },
   {
@@ -20,8 +20,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/really-long-offseason/static/js/2.4bbfb663.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "d6454d05b5beba19a907",
-    "url": "/really-long-offseason/static/js/main.474a5cda.chunk.js"
+    "revision": "c8c6a9eb1dba4ca20ec3",
+    "url": "/really-long-offseason/static/js/main.7ec44207.chunk.js"
   },
   {
     "revision": "7d58f31e0678207ccce3",

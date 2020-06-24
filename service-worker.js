@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/really-long-offseason/precache-manifest.61c31ca7e59909a4707053cf193231cc.js"
+  "/really-long-offseason/precache-manifest.dcb07cf02035a4750cee31c009802b3c.js"
 );
 
 self.addEventListener('message', (event) => {
